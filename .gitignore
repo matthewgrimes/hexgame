@@ -1,0 +1,16 @@
+*.opendb
+*.sdf
+*.tlog
+*.filters
+*.ipdb
+*.iobj
+*.zip
+*.out
+*.depend
+*.cscope_file_list
+doc/
+doxygen/
+obj/
+builds/
+extern/
+dll/

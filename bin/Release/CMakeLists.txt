@@ -15,15 +15,16 @@ set (EXTERNAL_LIBRARIES ${EXTERNAL_LIBRARIES} mingw32 assimp glew32 OpenGL32 glu
 configure_file (
 	"${PROJECT_SOURCE_DIR}/Version.h.in"
 	"${PROJECT_INCLUDE_DIR}/Version.h"
-)	
+)
 
 include_directories(${PROJECT_INCLUDE_DIR} ${EXTERNAL_INCLUDE_DIR})
 link_directories(${EXTERNAL_LIB_DIR})
 
+FILE ( GLOB_RECURSE HEXGAME_HEADERS ${PROJECT_SOURCE_DIR}/include/*h)
 FILE ( GLOB_RECURSE HEXGAME_SOURCES ${PROJECT_SOURCE_DIR}/src/*cpp )
 
 
-add_executable( HexGame ${HEXGAME_SOURCES} )
+add_executable( HexGame ${HEXGAME_SOURCES} ${HEXGAME_HEADERS})
 
 target_link_libraries(HexGame ${EXTERNAL_LIBRARIES})
 

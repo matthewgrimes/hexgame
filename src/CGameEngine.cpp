@@ -71,9 +71,7 @@ void CGameEngine::Init(const char* title, CGameState* initialState)
 
     std::string windowName;
     windowName += "Hexagonal Tactics | ";
-    windowName += std::to_string(0);
-    windowName += ".";
-    windowName += std::to_string(95);
+    windowName += std::string(HexGame_VERSION_SHORT);
     SDLWindowInfo displayInfo = SDLWindowInfo(windowName.c_str(), width, height);
 
     ServiceLocator::setMainDisplay(new SDLDisplay);

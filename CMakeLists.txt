@@ -12,13 +12,28 @@ endif()
 
 project( HexGame.exe )
 
+<<<<<<< 92e2df6a84f8c8a97192e0cf6009a649f49a3dbd
+
+# Appends the cmake/modules path to MAKE_MODULE_PATH variable.
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+#
+# Make a version file containing the current version from git.
+#
+include(GetGitRevisionDescription)
+git_describe(VERSION --tags)
+
+#parse the version information into pieces.
+string(REGEX REPLACE "^v([0-9]+)\\..*" "\\1" VERSION_MAJOR "${VERSION}")
+string(REGEX REPLACE "^v[0-9]+\\.([0-9]+).*" "\\1" VERSION_MINOR "${VERSION}")
+string(REGEX REPLACE "^v[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" VERSION_PATCH "${VERSION}")
+#string(REGEX REPLACE "^v[0-9]+\\.[0-9]+\\.[0-9]+(.*)" "\\1" VERSION_SHA1 "${VERSION}")
+set(VERSION_SHORT "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+
 # Set variable for the generate sources
 set(GENERATE_SRCS ${PROJECT_SOURCE_DIR}/src/generate.c)
 set(GENERATE_OUTPUT ${PROJECT_SOURCE_DIR}/generate)
 set(VERSION_OUTPUT ${PROJECT_SOURCE_DIR}/include/Version.h)
-set(VERSION_MAJOR 0)
-set(VERSION_MINOR 95)
-set(VERSION_PATCH 0)
 set(VERSION_META "-alpha")
 
 # Create command to compile the generate command
@@ -40,6 +55,7 @@ add_custom_target(generate_version
     DEPENDS ${GENERATE_OUTPUT}
     VERBATIM
     )
+set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)

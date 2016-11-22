@@ -1,2 +1,4 @@
 #define HexGame_VERSION_MAJOR @HexGame_VERSION_MAJOR@
 #define HexGame_VERSION_MINOR @HexGame_VERSION_MINOR@
+#define HexGame_VERSION_PATCH @HexGame_VERSION_PATCH@
+#define HexGame_VERSION_SHORT "@VERSION_SHORT@"

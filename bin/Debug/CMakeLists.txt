@@ -11,12 +11,6 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -static-libgcc -static
 
 set (EXTERNAL_LIBRARIES ${EXTERNAL_LIBRARIES} mingw32 assimp glew32 OpenGL32 glu32 SDL2main SDL2 SDL2_image CEGUIBase-0 CEGUIOpenGLRenderer-0)
 
-#Configure version header file
-configure_file (
-	"${PROJECT_SOURCE_DIR}/Version.h.in"
-	"${PROJECT_INCLUDE_DIR}/Version.h"
-)
-
 include_directories(${PROJECT_INCLUDE_DIR} ${EXTERNAL_INCLUDE_DIR})
 link_directories(${EXTERNAL_LIB_DIR})
 

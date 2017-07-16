@@ -12,8 +12,6 @@ endif()
 
 project( HexGame.exe )
 
-<<<<<<< 92e2df6a84f8c8a97192e0cf6009a649f49a3dbd
-
 # Appends the cmake/modules path to MAKE_MODULE_PATH variable.
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
@@ -56,6 +54,14 @@ add_custom_target(generate_version
     VERBATIM
     )
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+
+set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+
+#Configure version header file
+configure_file (
+	"${CMAKE_SOURCE_DIR}/Version.h.in"
+	"${PROJECT_INCLUDE_DIR}/Version.h"
+)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)

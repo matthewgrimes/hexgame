@@ -1,0 +1,6 @@
+[submodule "hexgame-dep"]
+	path = hexgame-dep
+	url = git@holomorphy.ddns.net:hexgame-dep.git
+[submodule "hexgame-data"]
+	path = hexgame-data
+	url = git@holomorphy.ddns.net:hexgame-data.git

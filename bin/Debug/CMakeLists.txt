@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 2.8)
 
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
-set (EXTERNAL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/extern/include)
-set (EXTERNAL_LIB_DIR ${PROJECT_SOURCE_DIR}/extern/lib)
+set (EXTERNAL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/hexgame-dep/extern/include)
+set (EXTERNAL_LIB_DIR ${PROJECT_SOURCE_DIR}/hexgame-dep/extern/lib)
 
 set (CMAKE_BUILD_TYPE=Debug)
 
@@ -15,20 +15,19 @@ set (EXTERNAL_LIBRARIES ${EXTERNAL_LIBRARIES} mingw32 assimp glew32 OpenGL32 glu
 configure_file (
 	"${PROJECT_SOURCE_DIR}/Version.h.in"
 	"${PROJECT_INCLUDE_DIR}/Version.h"
-)
+)	
 
 include_directories(${PROJECT_INCLUDE_DIR} ${EXTERNAL_INCLUDE_DIR})
 link_directories(${EXTERNAL_LIB_DIR})
 
-FILE ( GLOB_RECURSE HEXGAME_HEADERS ${PROJECT_SOURCE_DIR}/include/*h)
 FILE ( GLOB_RECURSE HEXGAME_SOURCES ${PROJECT_SOURCE_DIR}/src/*cpp )
 
 
-add_executable( HexGame-debug ${HEXGAME_SOURCES} ${HEXGAME_HEADERS})
+add_executable( HexGame-debug.exe ${HEXGAME_SOURCES} )
 
-target_link_libraries(HexGame-debug ${EXTERNAL_LIBRARIES})
+target_link_libraries(HexGame-debug.exe ${EXTERNAL_LIBRARIES})
 
+FILE(COPY ${PROJECT_SOURCE_DIR}/hexgame-data/data DESTINATION ./)
 
-FILE ( GLOB PROJECT_DLL ${PROJECT_SOURCE_DIR}/dll/*.dll )
-FILE(COPY ${PROJECT_SOURCE_DIR}/data DESTINATION ./)
-FILE(COPY ${PROJECT_DLL} DESTINATION ./)
+FILE(GLOB_RECURSE DLLFILES ${PROJECT_SOURCE_DIR}/hexgame-dep/dll/*.dll)
+FILE(COPY ${DLLFILES} DESTINATION ./)

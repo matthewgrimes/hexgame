@@ -18,3 +18,5 @@ set (HexGame_VERSION_MINOR 95)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)
+
+

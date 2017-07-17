@@ -1,28 +1,19 @@
 #include "HexTileMesh.h"
 #include "GLOBALS.h"
 #include "ResourceManager.h"
-HexTileMesh::HexTileMesh()
-{
-    //ctor
+HexTileMesh::HexTileMesh() {
+  // ctor
 }
 
-HexTileMesh::~HexTileMesh()
-{
-    //dtor
+HexTileMesh::~HexTileMesh() {
+  // dtor
 }
 
-void HexTileMesh::Draw()
-{
-    Render();
-}
+void HexTileMesh::Draw() { Render(); }
 
-void HexTileMesh::drawGrid()
-{
+void HexTileMesh::drawGrid() {}
 
-}
-
-void HexTileMesh::LoadNormal(const std::string& fileName)
-{
-    normalMap = fileName;
-    ResourceManager::getSingleton()->addTexture(normalMap);
+void HexTileMesh::LoadNormal(const std::string &fileName) {
+  normalMap = fileName;
+  ResourceManager::getSingleton()->addTexture(normalMap);
 }

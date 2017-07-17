@@ -3,20 +3,20 @@
 
 class MainGameState;
 
-class TurnPhase
-{
+class TurnPhase {
 public:
-    TurnPhase() {}
-    ~TurnPhase() {}
+  TurnPhase() {}
+  ~TurnPhase() {}
 
-    virtual void HandleMouseClick()=0;
-    virtual void Update()=0;
-    virtual void Activate()=0;
-    virtual void HandleEscape();
+  virtual void HandleMouseClick() = 0;
+  virtual void Update() = 0;
+  virtual void Activate() = 0;
+  virtual void HandleEscape();
 
-    virtual void registerState(MainGameState* value);
+  virtual void registerState(MainGameState *value);
+
 protected:
-    MainGameState* state;
+  MainGameState *state;
 };
 
 #endif

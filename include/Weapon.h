@@ -1,52 +1,50 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
+#include "FileLoader.h"
 #include "Item.h"
 #include "damageEffect.h"
-#include "FileLoader.h"
 
 class Character;
 enum weaponTypes { MELEE, RANGED };
 
-class Weapon : public Item
-{
-    friend class WeaponFileLoader;
+class Weapon : public Item {
+  friend class WeaponFileLoader;
+
 public:
-    Weapon() {};
-    virtual ~Weapon() {};
-    virtual bool loadFromFile(const std::string& fileName);
+  Weapon(){};
+  virtual ~Weapon(){};
+  virtual bool loadFromFile(const std::string &fileName);
 
-    int getMinRange();
-    int getMaxRange();
-    int getDamage();
-    int getAOE();
-    weaponTypes getType();
+  int getMinRange();
+  int getMaxRange();
+  int getDamage();
+  int getAOE();
+  weaponTypes getType();
 
-    damageEffect getDamageEffect()
-    {
-        return damage;
-    }
+  damageEffect getDamageEffect() { return damage; }
+
 protected:
-    int minRange;
-    int maxRange;
+  int minRange;
+  int maxRange;
 
-    damageEffect damage;
-    weaponTypes type;
+  damageEffect damage;
+  weaponTypes type;
 };
 
-class WeaponFileLoader : public ItemFileLoader
-{
+class WeaponFileLoader : public ItemFileLoader {
 public:
-    WeaponFileLoader(const std::string& name) : FileLoader(name), ItemFileLoader(name) {}
-    ~WeaponFileLoader() {}
+  WeaponFileLoader(const std::string &name)
+      : FileLoader(name), ItemFileLoader(name) {}
+  ~WeaponFileLoader() {}
 
-    void setWeapon(Weapon* value)
-    {
-        weapon = value;
-        item = value;
-    }
+  void setWeapon(Weapon *value) {
+    weapon = value;
+    item = value;
+  }
+
 protected:
-    void parseLine(const std::string& field, const std::string& data);
-    Weapon* weapon;
+  void parseLine(const std::string &field, const std::string &data);
+  Weapon *weapon;
 };
 #endif

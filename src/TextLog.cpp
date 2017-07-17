@@ -1,3 +1,1 @@
 #include "TextLog.h"
-
-

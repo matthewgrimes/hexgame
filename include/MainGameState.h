@@ -1,76 +1,73 @@
 #ifndef MAINGAMESTATE_H
 #define MAINGAMESTATE_H
 
+#include "AIPhase.h"
+#include "AttackPhase.h"
 #include "CGameState.h"
-#include "HexMap.h"
 #include "Camera.h"
 #include "Character.h"
-#include "TextLog.h"
-#include "TechniqueSelect.h"
 #include "CharacterInfoBox.h"
 #include "FacingPhase.h"
-#include "MovementPhase.h"
-#include "AttackPhase.h"
+#include "HexMap.h"
 #include "IdlePhase.h"
-#include "AIPhase.h"
+#include "MovementPhase.h"
+#include "TechniqueSelect.h"
+#include "TextLog.h"
 #include <deque>
 
-class MainGameState : public CGameState
-{
-    friend class TurnPhase;
-    friend class FacingPhase;
-    friend class MovementPhase;
-    friend class AttackPhase;
-    friend class IdlePhase;
-    friend class AIPhase;
-    friend class CharacterAI;
+class MainGameState : public CGameState {
+  friend class TurnPhase;
+  friend class FacingPhase;
+  friend class MovementPhase;
+  friend class AttackPhase;
+  friend class IdlePhase;
+  friend class AIPhase;
+  friend class CharacterAI;
+
 public:
-    virtual void Init(); /** Constructor */
-    virtual void Cleanup();
+  virtual void Init(); /** Constructor */
+  virtual void Cleanup();
 
-    virtual void Pause();
-    virtual void Resume();
+  virtual void Pause();
+  virtual void Resume();
 
-    virtual void HandleEvents(CGameEngine* game);
-    virtual void Update(CGameEngine* game);
-    virtual void Draw(CGameEngine* game);
+  virtual void HandleEvents(CGameEngine *game);
+  virtual void Update(CGameEngine *game);
+  virtual void Draw(CGameEngine *game);
 
-    static MainGameState* Instance()
-    {
-        return &m_MainGameState;
-    }
-
+  static MainGameState *Instance() { return &m_MainGameState; }
 
 protected:
-    MainGameState() {};
+  MainGameState(){};
 
-    HexMap currentMap;
+  HexMap currentMap;
 
-    Camera mainCamera;
+  Camera mainCamera;
 
-    std::deque<Character*> mCharacters;
-    Character* activeCharacter;
-    std::deque<Character*> turnOrder;
+  std::deque<Character *> mCharacters;
+  Character *activeCharacter;
+  std::deque<Character *> turnOrder;
 
-    TechniqueSelect techniqueSelectBox;
+  TechniqueSelect techniqueSelectBox;
 
-    CharacterInfoBox characterInfo;
+  CharacterInfoBox characterInfo;
 
-    void resetToIdle();
+  void resetToIdle();
 
-    void drawPortraits();
+  void drawPortraits();
 
-    TurnPhase* currentPhase;
-    FacingPhase facingPhase;
-    MovementPhase movementPhase;
-    AttackPhase attackPhase;
-    IdlePhase idlePhase;
-    AIPhase aiPhase;
+  TurnPhase *currentPhase;
+  FacingPhase facingPhase;
+  MovementPhase movementPhase;
+  AttackPhase attackPhase;
+  IdlePhase idlePhase;
+  AIPhase aiPhase;
+
 private:
-    static MainGameState m_MainGameState;
+  static MainGameState m_MainGameState;
 
-    void HandleKeyEvent( SDL_Event event );
-    void HandleMouseEvent( SDL_Event event);
+  void HandleKeyEvent(SDL_Event event);
+  void HandleMouseEvent(SDL_Event event);
 };
 
 #endif // MAINGAMESTATE_H

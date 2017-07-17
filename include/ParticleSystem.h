@@ -8,40 +8,38 @@
 
 const unsigned int MAX_PARTICLES = 100;
 
+class ParticleSystem {
+public:
+  ParticleSystem(std::string shaderProgram, Texture *texture,
+                 unsigned int numParticles);
+  virtual ~ParticleSystem();
 
-class ParticleSystem
-{
-    public:
-        ParticleSystem(std::string shaderProgram, Texture* texture, unsigned int numParticles);
-        virtual ~ParticleSystem();
+  void Update(float deltaT);
 
-        void Update(float deltaT);
+  void Draw();
 
-        void Draw();
+  int firstUnusedParticle();
 
-        int firstUnusedParticle();
+  void Cleanup();
 
-        void Cleanup();
+protected:
+private:
+  Particle ParticlesContainer[MAX_PARTICLES];
 
-    protected:
+  unsigned int lastUsedParticle;
 
-    private:
-        Particle ParticlesContainer[MAX_PARTICLES];
+  unsigned int numberOfParticles;
 
-        unsigned int lastUsedParticle;
+  Texture *particleTexture;
+  std::string Shader;
 
-        unsigned int numberOfParticles;
+  GLuint VAO;
 
-        Texture* particleTexture;
-        std::string Shader;
+  void Init();
 
-        GLuint VAO;
+  void respawnParticle(Particle &particle, const Vector3f &offset);
 
-        void Init();
-
-        void respawnParticle(Particle& particle, const Vector3f& offset);
-
-        std::vector<Particle> Particles;
+  std::vector<Particle> Particles;
 };
 
 #endif // PARTICLESYSTEM_H

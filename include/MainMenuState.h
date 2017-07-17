@@ -8,31 +8,26 @@
 #include "CGameState.h"
 #include "HexGameEngine.h"
 //! Basic game state to serve as template
-class MainMenuState : public CGameState
-{
+class MainMenuState : public CGameState {
 public:
-    void Init(); /** Constructor */
-    void Cleanup();
+  void Init(); /** Constructor */
+  void Cleanup();
 
-    void Pause();
-    void Resume();
+  void Pause();
+  void Resume();
 
-    void HandleEvents(CGameEngine* game);
-    void Update(CGameEngine* game);
-    void Draw(CGameEngine* game);
+  void HandleEvents(CGameEngine *game);
+  void Update(CGameEngine *game);
+  void Draw(CGameEngine *game);
 
-    static MainMenuState* Instance()
-    {
-        return &m_MainMenuState;
-    }
+  static MainMenuState *Instance() { return &m_MainMenuState; }
 
 protected:
-    MainMenuState() { }
+  MainMenuState() {}
 
 private:
-    static MainMenuState m_MainMenuState;
-    CGameEngine* m_Game;
-
+  static MainMenuState m_MainMenuState;
+  CGameEngine *m_Game;
 };
 
 #endif // MainMenuState_H

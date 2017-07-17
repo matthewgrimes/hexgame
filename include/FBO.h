@@ -1,25 +1,24 @@
 #ifndef FBO_H
 #define FBO_H
 
-
 #include <GL/glew.h>
 
-class FBO
-{
+class FBO {
 public:
-    FBO();
-    ~FBO();
+  FBO();
+  ~FBO();
 
-    bool Init( const unsigned int winWidth, const unsigned int winHeight);
+  bool Init(const unsigned int winWidth, const unsigned int winHeight);
 
-    void EnableWriting();
-    void DisableWriting();
+  void EnableWriting();
+  void DisableWriting();
 
-    void BindTexture(GLenum TextureUnit);
+  void BindTexture(GLenum TextureUnit);
+
 protected:
-    virtual void setupTextures(unsigned int winWidth, unsigned int winHeight);
-    GLuint m_fbo;
-    GLuint m_Texture;
+  virtual void setupTextures(unsigned int winWidth, unsigned int winHeight);
+  GLuint m_fbo;
+  GLuint m_Texture;
 };
 
 #endif

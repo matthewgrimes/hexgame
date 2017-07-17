@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 2.8)
 
+include (clang-format.cmake)
+include (cppcheck.cmake)
+
 if(UNIX)
 	set (CMAKE_SYSTEM_NAME Windows)
 set (CMAKE_CROSSCOMPILING 1)
@@ -54,8 +57,10 @@ add_custom_target(generate_version
     VERBATIM
     )
 
+
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)
+
 

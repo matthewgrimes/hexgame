@@ -1,61 +1,60 @@
 #ifndef CHARACTERAI_H
 #define CHARACTERAI_H
 
-#include "HexUtils.h"
 #include "Character.h"
-#include <vector>
-#include <random>
+#include "HexUtils.h"
 #include <chrono>
+#include <random>
+#include <vector>
 
 class MainGameState;
 
-class CharacterAI
-{
+class CharacterAI {
 public:
-    CharacterAI();
-    ~CharacterAI();
+  CharacterAI();
+  ~CharacterAI();
 
-    void registerState(MainGameState* value);
+  void registerState(MainGameState *value);
 
-    void performAction();
+  void performAction();
 
-    bool endTurn();
+  bool endTurn();
 
-    void setDifficulty(int value);
-    int getDifficulty();
+  void setDifficulty(int value);
+  int getDifficulty();
+
 private:
-    MainGameState* state;
+  MainGameState *state;
 
-    void populateCharacters();
-    std::vector<Character*> playerCharacters;
-    std::vector<Character*> aiCharacters;
+  void populateCharacters();
+  std::vector<Character *> playerCharacters;
+  std::vector<Character *> aiCharacters;
 
-    void performMove();
-    void setDestination();
-    HexCoordinate2D destination;
+  void performMove();
+  void setDestination();
+  HexCoordinate2D destination;
 
-    bool attack;
-    float simulateAttack(int i, int j);
-    void performAttack();
-    void setAttackLocation();
-    HexCoordinate2D attackLocation;
+  bool attack;
+  float simulateAttack(int i, int j);
+  void performAttack();
+  void setAttackLocation();
+  HexCoordinate2D attackLocation;
 
-    float optimizeWeaponAttack();
-    float optimizeTechniqueAttack();
-    int bestTechnique;
+  float optimizeWeaponAttack();
+  float optimizeTechniqueAttack();
+  int bestTechnique;
 
-    void setFacing();
+  void setFacing();
 
-    float distanceToAllies(int i, int j);
-    float distanceToEnemies(int i, int j);
+  float distanceToAllies(int i, int j);
+  float distanceToEnemies(int i, int j);
 
+  std::default_random_engine generator;
+  void initializeGenerator();
 
-    std::default_random_engine generator;
-    void initializeGenerator();
+  std::chrono::high_resolution_clock::time_point initTime;
 
-    std::chrono::high_resolution_clock::time_point initTime;
-
-    int Difficulty;
+  int Difficulty;
 };
 
 #endif

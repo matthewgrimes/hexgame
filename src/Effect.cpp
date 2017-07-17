@@ -1,11 +1,9 @@
 #include "Effect.h"
 
-Effect::Effect()
-{
-    //ctor
+Effect::Effect() {
+  // ctor
 }
 
-Effect::~Effect()
-{
-    //dtor
+Effect::~Effect() {
+  // dtor
 }

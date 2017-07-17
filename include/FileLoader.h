@@ -1,28 +1,28 @@
 #ifndef FILELOADER_H
 #define FILELOADER_H
 
-
 #include "LineParser.h"
-#include <string>
 #include <fstream>
+#include <string>
 #include <vector>
 
-class FileLoader
-{
+class FileLoader {
 public:
-    FileLoader(const std::string& name);
+  FileLoader(const std::string &name);
 
-    virtual ~FileLoader();
+  virtual ~FileLoader();
 
-    void parseFile();
+  void parseFile();
+
 protected:
-    std::string fileName;
-    std::ifstream m_file;
+  std::string fileName;
+  std::ifstream m_file;
 
-    bool openFile();
-    void closeFile();
+  bool openFile();
+  void closeFile();
 
-    virtual void parseLine(const std::string& field, const std::string& data)=0;
+  virtual void parseLine(const std::string &field, const std::string &data) = 0;
+
 private:
 };
 

@@ -20,7 +20,7 @@ FILE ( GLOB_RECURSE HEXGAME_SOURCES ${PROJECT_SOURCE_DIR}/src/*cpp )
 
 
 add_executable( HexGame-debug.exe ${HEXGAME_SOURCES})
-add_dependencies(HexGame-debug.exe generate_version)
+add_dependencies(HexGame-debug.exe generate_version cppcheck)
 
 set( LIBRARIES Mesh Lighting )
 

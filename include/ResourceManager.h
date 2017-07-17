@@ -1,33 +1,32 @@
 #ifndef RESOURCE_MANAGER_H
 #define RESOURCE_MANAGER_H
 
-#include "ResourcePool.h"
 #include "Mesh.h"
-#include "Texture.h"
+#include "ResourcePool.h"
 #include "ShaderManager.h"
+#include "Texture.h"
 
-class ResourceManager
-{
+class ResourceManager {
 public:
-    static void Destroy();
-    static ResourceManager* getSingleton();
+  static void Destroy();
+  static ResourceManager *getSingleton();
 
-    Texture* addTexture(const std::string& fileName);
-    Texture* getTexture(const std::string& textureHandle);
+  Texture *addTexture(const std::string &fileName);
+  Texture *getTexture(const std::string &textureHandle);
 
-    void addMesh(const std::string& fileName);
-    Mesh* getMesh(const std::string& meshHandle);
+  void addMesh(const std::string &fileName);
+  Mesh *getMesh(const std::string &meshHandle);
 
-    ShaderManager* getShaderManager();
+  ShaderManager *getShaderManager();
 
 private:
-    ResourceManager();
-    ~ResourceManager();
-    static void Init();
-    static ResourceManager *m_Singleton;
+  ResourceManager();
+  ~ResourceManager();
+  static void Init();
+  static ResourceManager *m_Singleton;
 
-    ResourcePool<Mesh> m_MeshPool;
-    TexturePool m_TexturePool;
+  ResourcePool<Mesh> m_MeshPool;
+  TexturePool m_TexturePool;
 };
 
 #endif

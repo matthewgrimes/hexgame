@@ -15,6 +15,7 @@
 "#define %s_VERSION_BUILD %d\n"          \
 "#define %s_VERSION_META \"%s\"\n"       \
 "#define %s_VERSION \"%d.%d.%d.%d%s\"\n" \
+"#define %s_VERSION_SHORT \"%d.%d.%d\"\n"\
 "#define %s_COMPILE_DATE \"%s\"\n"       \
 "#define %s_COMPILE_TIME \"%s\"\n"       \
 "\n"                                     \
@@ -154,6 +155,7 @@ int main(int argc, char **argv)
 		prefix, build,
 		prefix, meta,
 		prefix, major, minor, patch, build, meta,
+		prefix, major, minor, patch,
 		prefix, datestr,
 		prefix, timestr,
 		prefix);

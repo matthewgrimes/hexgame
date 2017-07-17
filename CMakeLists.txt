@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 if(UNIX)
-set (CMAKE_SYSTEM_NAME Generic)
+	set (CMAKE_SYSTEM_NAME Windows)
 set (CMAKE_CROSSCOMPILING 1)
 set (CMAKE_SYSTEM_PROCESSOR arm)
 set (DLLTOOL /usr/bin/i686-w64-mingw32-dlltool)
@@ -53,15 +53,9 @@ add_custom_target(generate_version
     DEPENDS ${GENERATE_OUTPUT}
     VERBATIM
     )
-set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-
-#Configure version header file
-configure_file (
-	"${CMAKE_SOURCE_DIR}/Version.h.in"
-	"${PROJECT_INCLUDE_DIR}/Version.h"
-)
-
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)
+

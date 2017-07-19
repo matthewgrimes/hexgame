@@ -3,16 +3,6 @@ cmake_minimum_required (VERSION 2.8)
 include (clang-format.cmake)
 include (cppcheck.cmake)
 
-if(UNIX)
-	set (CMAKE_SYSTEM_NAME Windows)
-set (CMAKE_CROSSCOMPILING 1)
-set (CMAKE_SYSTEM_PROCESSOR arm)
-set (DLLTOOL /usr/bin/i686-w64-mingw32-dlltool)
-
-set (CMAKE_C_COMPILER /usr/bin/i686-w64-mingw32-gcc-win32)
-set (CMAKE_CXX_COMPILER /usr/bin/i686-w64-mingw32-g++-win32)
-endif()
-
 project( HexGame.exe )
 
 # Appends the cmake/modules path to MAKE_MODULE_PATH variable.
@@ -57,10 +47,23 @@ add_custom_target(generate_version
     VERBATIM
     )
 
-
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -static-libgcc -static-libstdc++ -O3")
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set (EXTERNAL_LIB_DIR ${PROJECT_SOURCE_DIR}/hexgame-dep/extern/lib)
+set (LIB_DIR ${PROJECT_SOURCE_DIR}/lib)
+set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+
+include_directories(${PROJECT_INCLUDE_DIR} ${EXTERNAL_INCLUDE_DIR})
+link_directories(${EXTERNAL_LIB_DIR} ${LIB_DIR})
+
+string(FIND "${CMAKE_CXX_COMPILER}" "mingw" BUILDING_MINGW)
+if (${BUILDING_MINGW} EQUAL -1)
+message(STATUS "Assuming building for Linux with ${CMAKE_CXX_COMPILER}")
+set (EXTERNAL_LIBRARIES ${EXTERNAL_LIBRARIES} assimp GLEW GL GLU SDL2-2.0 SDL2_image-2.0 CEGUIBase-0 CEGUIOpenGLRenderer-0)
+endif()
+
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Release)
 add_subdirectory(${PROJECT_SOURCE_DIR}/bin/Debug)
-
+add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 

@@ -7,7 +7,6 @@
 #include "PrintfTextLog.h"
 #include "ServiceLocator.h"
 #include "ShaderManager.h"
-#include "Version.h"
 #include <fstream>
 #include <string>
 
@@ -59,8 +58,7 @@ void CGameEngine::Init(const char *title, CGameState *initialState) {
   //-------------------------------------------------------------------
 
   std::string windowName;
-  windowName += "Hexagonal Tactics | ";
-  windowName += std::string(HexGame_VERSION_SHORT);
+  windowName += title;
   SDLWindowInfo displayInfo = SDLWindowInfo(windowName.c_str(), width, height);
 
   ServiceLocator::setMainDisplay(new SDLDisplay);

@@ -14,12 +14,13 @@ endforeach ()
 add_custom_target(
 cppcheck
 COMMAND /usr/bin/cppcheck
---enable=warning,performance,portability,information,missingInclude
+--enable=warning,performance,portability,information
 --std=c++11
 --library=qt.cfg
 --template="[{severity}][{id}] {message} {callstack} \(On {file}:{line}\)"
 --verbose
 --force
 --quiet
+--suppress=missingInclude
 ${ALL_SOURCE_FILES}
 )

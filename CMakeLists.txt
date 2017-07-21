@@ -7,7 +7,6 @@ project( HexGame.exe )
 find_package(assimp REQUIRED)
 # Appends the cmake/modules path to MAKE_MODULE_PATH variable.
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
-set(CMAKE_VERBOSE_MAKEFILE on)
 #
 # Make a version file containing the current version from git.
 #
@@ -47,7 +46,7 @@ add_custom_target(generate_version
     VERBATIM
     )
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -static-libgcc -static-libstdc++")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 set (LIB_DIR ${PROJECT_SOURCE_DIR}/lib)
 set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)

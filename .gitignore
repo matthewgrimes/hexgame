@@ -8,6 +8,7 @@
 *.out
 *.depend
 *.cscope_file_list
+include/Version.h
 doc/
 doxygen/
 obj/
@@ -15,3 +16,5 @@ builds/
 extern/
 dll/
 data/
+build/
+cmake/

@@ -3,38 +3,34 @@
 
 #include <string>
 
-struct textLogColor
-{
-    textLogColor(float r, float g, float b, float alpha = 1.f) : R(r), G(g), B(b), Alpha(alpha)
-    {
-
-    }
-    float R;
-    float G;
-    float B;
-    float Alpha;
+struct textLogColor {
+  textLogColor(float r, float g, float b, float alpha = 1.f)
+      : R(r), G(g), B(b), Alpha(alpha) {}
+  float R;
+  float G;
+  float B;
+  float Alpha;
 };
 
-class TextLog
-{
+class TextLog {
 
 public:
-    TextLog() {}
-    virtual ~TextLog() {}
+  TextLog() {}
+  virtual ~TextLog() {}
 
-    virtual void Init() = 0;
-    virtual void addText(const std::string& newText, textLogColor color = textLogColor(1,1,1,1)) = 0;
-    virtual void Hide() = 0;
-    virtual void Show() = 0;
-
+  virtual void Init() = 0;
+  virtual void addText(const std::string &newText,
+                       textLogColor color = textLogColor(1, 1, 1, 1)) = 0;
+  virtual void Hide() = 0;
+  virtual void Show() = 0;
 };
 
-class NullTextLog : public TextLog
-{
-    virtual void Init() {}
-    virtual void addText(const std::string& newText, textLogColor color = textLogColor(1, 1, 1, 1)) {}
-    virtual void Hide() {}
-    virtual void Show() {}
+class NullTextLog : public TextLog {
+  virtual void Init() {}
+  virtual void addText(const std::string &newText,
+                       textLogColor color = textLogColor(1, 1, 1, 1)) {}
+  virtual void Hide() {}
+  virtual void Show() {}
 };
 
 #endif

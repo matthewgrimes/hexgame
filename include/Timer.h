@@ -1,21 +1,21 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-
-class Timer
-{
+class Timer {
 public:
-    /** Default constructor */
-    Timer();
-    /** Default destructor */
-    virtual ~Timer();
+  /** Default constructor */
+  Timer();
+  /** Default destructor */
+  virtual ~Timer();
 
-    void Start();
-    void Reset();
-    float getTicksElapsed();
-    float getSecondsElapsed();
+  void Start();
+  void Reset();
+  float getTicksElapsed();
+  float getSecondsElapsed();
+
 protected:
-    float startTime;
+  float startTime;
+
 private:
 };
 

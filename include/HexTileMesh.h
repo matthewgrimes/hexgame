@@ -5,18 +5,18 @@
 #include "Mesh.h"
 #include <string>
 
-class HexTileMesh : public HexTile, public Mesh
-{
+class HexTileMesh : public HexTile, public Mesh {
 public:
-    /** Default constructor */
-    HexTileMesh();
-    /** Default destructor */
-    virtual ~HexTileMesh();
+  /** Default constructor */
+  HexTileMesh();
+  /** Default destructor */
+  virtual ~HexTileMesh();
 
-    void Draw();
+  void Draw();
 
-    virtual void drawGrid();
-    void LoadNormal(const std::string& fileName);
+  virtual void drawGrid();
+  void LoadNormal(const std::string &fileName);
+
 protected:
 private:
 };

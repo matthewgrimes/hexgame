@@ -4,22 +4,23 @@
 #include <vector>
 class Character;
 
-class Effect
-{
+class Effect {
 public:
-    /** Default constructor */
-    Effect();
-    /** Default destructor */
-    virtual ~Effect();
+  /** Default constructor */
+  Effect();
+  /** Default destructor */
+  virtual ~Effect();
 
-    virtual void setBaseHealthEffectAmount(int value) = 0;
-    virtual int getBaseHealthEffectAmount() = 0;
+  virtual void setBaseHealthEffectAmount(int value) = 0;
+  virtual int getBaseHealthEffectAmount() = 0;
 
-    virtual int calculateHealthEffectTotal(Character* source, Character* target) = 0;
+  virtual int calculateHealthEffectTotal(Character *source,
+                                         Character *target) = 0;
+
 protected:
+  int baseHealthEffectAmount;
+  int areaOfEffect;
 
-    int baseHealthEffectAmount;
-    int areaOfEffect;
 private:
 };
 

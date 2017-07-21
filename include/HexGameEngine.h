@@ -3,8 +3,7 @@
 
 #include "CGameEngine.h"
 
-class HexGameEngine : public CGameEngine
-{
+class HexGameEngine : public CGameEngine {
 public:
 };
 

@@ -3,16 +3,15 @@
 
 #include "TurnPhase.h"
 
-class FacingPhase : public TurnPhase
-{
+class FacingPhase : public TurnPhase {
 public:
-    FacingPhase() : TurnPhase() {}
-    ~FacingPhase() {}
+  FacingPhase() : TurnPhase() {}
+  ~FacingPhase() {}
 
-    void HandleMouseClick();
-    void Update();
-    void Activate();
-    void HandleEscape();
+  void HandleMouseClick();
+  void Update();
+  void Activate();
+  void HandleEscape();
 };
 
 #endif

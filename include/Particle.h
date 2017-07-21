@@ -4,33 +4,29 @@
 #include "math_utils.h"
 #include <string>
 
-class Particle
-{
-    public:
-        Particle();
-        virtual ~Particle();
+class Particle {
+public:
+  Particle();
+  virtual ~Particle();
 
-        Vector3f Speed;
-        Vector3f Position;
-        Vector3f Color;
+  Vector3f Speed;
+  Vector3f Position;
+  Vector3f Color;
 
-        float Lifespan;
+  float Lifespan;
 
-        float distanceToCamera;
+  float distanceToCamera;
 
-        bool operator<(Particle& that)
-        {
-            return this->distanceToCamera > that.distanceToCamera;
-        }
+  bool operator<(Particle &that) {
+    return this->distanceToCamera > that.distanceToCamera;
+  }
 
-        void Update(float deltaT, Vector3f Force=Vector3f(0.f,0.f,0.f));
+  void Update(float deltaT, Vector3f Force = Vector3f(0.f, 0.f, 0.f));
 
-        std::string textureName;
+  std::string textureName;
 
-    protected:
-
-    private:
+protected:
+private:
 };
-
 
 #endif // PARTICLE_H

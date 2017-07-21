@@ -5,35 +5,33 @@
 #include <string>
 
 //! a generic item class
-class Item
-{
-    friend class ItemFileLoader;
+class Item {
+  friend class ItemFileLoader;
+
 public:
-    Item();
-    virtual ~Item();
+  Item();
+  virtual ~Item();
 
-    virtual bool loadFromFile(const std::string& fileName);
+  virtual bool loadFromFile(const std::string &fileName);
 
-    // return name
-    std::string getName();
-    // set name
-    void setName(std::string value);
+  // return name
+  std::string getName();
+  // set name
+  void setName(std::string value);
+
 protected:
-    std::string name;
+  std::string name;
 };
 
-class ItemFileLoader : public virtual FileLoader
-{
+class ItemFileLoader : public virtual FileLoader {
 public:
-    ItemFileLoader(const std::string& name) : FileLoader(name) {}
-    ~ItemFileLoader() {}
+  ItemFileLoader(const std::string &name) : FileLoader(name) {}
+  ~ItemFileLoader() {}
 
-    void setItem(Item* value)
-    {
-        item = value;
-    }
+  void setItem(Item *value) { item = value; }
+
 protected:
-    Item* item;
-    virtual void parseLine(const std::string& field, const std::string& data);
+  Item *item;
+  virtual void parseLine(const std::string &field, const std::string &data);
 };
 #endif

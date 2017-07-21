@@ -1,45 +1,35 @@
 #pragma once
 
 #include "GUISystem.h"
-#include "TextLog.h"
 #include "SDLDisplay.h"
+#include "TextLog.h"
 
-class ServiceLocator
-{
+class ServiceLocator {
 public:
-    static void Initialize();
-    static void Cleanup();
-    ~ServiceLocator();
+  static void Initialize();
+  static void Cleanup();
+  ~ServiceLocator();
 
-    static GUISystem& getGUISystem()
-    {
-        return *guiSystem;
-    }
-    static void setGUISystem(GUISystem* newSystem);
+  static GUISystem &getGUISystem() { return *guiSystem; }
+  static void setGUISystem(GUISystem *newSystem);
 
-    static TextLog& getTextLog()
-    {
-        return *textLog;
-    }
-    static void setTextLog(TextLog* newTextLog);
+  static TextLog &getTextLog() { return *textLog; }
+  static void setTextLog(TextLog *newTextLog);
 
-    static SDLDisplay& getMainDisplay()
-    {
-        return *mainDisplay;
-    }
-    static void setMainDisplay(SDLDisplay* newMainDisplay );
+  static SDLDisplay &getMainDisplay() { return *mainDisplay; }
+  static void setMainDisplay(SDLDisplay *newMainDisplay);
+
 private:
-    ServiceLocator();
+  ServiceLocator();
 
-    static GUISystem* guiSystem;
-    static NullGUISystem nullGUISystem;
+  static GUISystem *guiSystem;
+  static NullGUISystem nullGUISystem;
 
-    static TextLog* textLog;
-    static NullTextLog nullTextLog;
+  static TextLog *textLog;
+  static NullTextLog nullTextLog;
 
-    static SDLDisplay* mainDisplay;
-    static NullDisplay nullDisplay;
+  static SDLDisplay *mainDisplay;
+  static NullDisplay nullDisplay;
 
-    static bool initialized;
+  static bool initialized;
 };
-

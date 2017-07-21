@@ -3,7 +3,7 @@
 #include "HexUtils.h"
 #include "Pipeline.h"
 #include "ServiceLocator.h"
-#include <math.h>
+#include <cmath>
 #include <fstream>
 
 void CharacterFileLoader::parseLine(const std::string &field,

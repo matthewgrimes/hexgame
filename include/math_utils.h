@@ -5,13 +5,13 @@
 #ifdef _WIN32
 #define _USE_MATH_DEFINES
 #define SNPRINTF snprintf
-#include <math.h>
+#include <cmath>
 #ifndef M_PI
 #define M_PI 3.1415926535897932384626433832795
 #endif
 #define RANDOM rand
 #else
-#include <math.h>
+#include <cmath>
 #define RANDOM random
 #define SNPRINTF snprintf
 #endif

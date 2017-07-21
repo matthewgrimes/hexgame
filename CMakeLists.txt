@@ -4,7 +4,6 @@ include (cppcheck.cmake)
 enable_language(CXX)
 
 project( HexGame.exe )
-find_package(assimp REQUIRED)
 # Appends the cmake/modules path to MAKE_MODULE_PATH variable.
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 #

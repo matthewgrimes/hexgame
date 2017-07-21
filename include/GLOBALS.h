@@ -1,7 +1,7 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include <math.h>
+#include <cmath>
 
 #define TILERADIUS 1
 #define TILETHICKNESS (TILERADIUS / 2.0)

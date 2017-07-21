@@ -5,7 +5,7 @@
 #ifdef _WIN32
 #define _USE_MATH_DEFINES
 #define SNPRINTF snprintf
-#include <cmath>
+#include <math.h>
 #ifndef M_PI
 #define M_PI 3.1415926535897932384626433832795
 #endif

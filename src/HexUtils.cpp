@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 
 #include <GL/glew.h>
-#include <cmath>
+#include <math.h>
 
 int NeighborI(int i, int j, Directions D) {
   if (D == EAST || D == NORTHEAST) {

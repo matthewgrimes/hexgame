@@ -133,8 +133,8 @@ void HexMap::drawTile(int i, int j, unsigned int layer) {
          mainCursor.getRadius()) ||
        (getDistance(i, j, mainCursor.getHexI(), mainCursor.getHexJ()) <=
             mainCursor.getRadius() &&
-        abs(getHeight(i, j) -
-            getHeight(mainCursor.getHexI(), mainCursor.getHexJ())) >= 2))) {
+        abs((long)getHeight(i, j) -
+            (long)getHeight(mainCursor.getHexI(), mainCursor.getHexJ())) >= 2))) {
 
     // glUniform1i(
     // glGetUniformLocation(ShaderManager::getInstance()->getProgram(),"isWater"),
@@ -155,8 +155,8 @@ void HexMap::drawTile(int i, int j, unsigned int layer) {
            getDistance(i, j, mainCursor.getHexI(), mainCursor.getHexJ()) <=
                mainCursor.getRadius() &&
            mainCursor.isActive() && layer == (unsigned int)getHeight(i, j) &&
-           abs(getHeight(i, j) -
-               getHeight(mainCursor.getHexI(), mainCursor.getHexJ())) < 2) {
+           abs((long)getHeight(i, j) -
+               (long)getHeight(mainCursor.getHexI(), mainCursor.getHexJ())) < 2) {
     // glUniform1i(glGetUniformLocation(ShaderManager::getInstance()->getProgram(),
     // "drawGrid"), 1);
     // glUniform1i(
@@ -252,7 +252,7 @@ HexMap::drawFilledCircle(int i0, int j0, int radius, bool actorsok,
       if ((floor(cursorData[newI][newJ]) != color ||
            newDistance < distance[std::make_pair(newI, newJ)]) &&
           newDistance <= radius && getCurrentData(newI, newJ) != 0 &&
-          abs(getHeight(i, j) - getHeight(newI, newJ)) <= maxheightdiff &&
+          abs((long)getHeight(i, j) - (long)getHeight(newI, newJ)) <= maxheightdiff &&
           (actorsok || (actorLocations[newI][newJ] != 1 &&
                         obstacleData[newI][newJ] == 0)) &&
           (!terrain ||

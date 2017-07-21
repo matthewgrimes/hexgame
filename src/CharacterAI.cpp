@@ -291,7 +291,7 @@ float CharacterAI::simulateAttack(int i, int j) {
   for (auto character : state->mCharacters) {
     if (state->activeCharacter->getCurrentAttack()->checkRange(
             i, j, character->getI(), character->getJ()) &&
-        abs(state->currentMap.getHeight(i, j) - character->getLevel()) < 2) {
+        abs((long)state->currentMap.getHeight(i, j) - (long)character->getLevel()) < 2) {
       characterDamage = 100.f * (1 - 3 * character->getAI()) *
                         state->activeCharacter->simulateAttack(character) *
                         1.f / character->getMaxHitPoints();
@@ -309,9 +309,8 @@ void CharacterAI::performAttack() {
     if (state->activeCharacter->getCurrentAttack()->checkRange(
             attackLocation.getI(), attackLocation.getJ(), character->getI(),
             character->getJ()) &&
-        abs(state->currentMap.getHeight(attackLocation.getI(),
-                                        attackLocation.getJ()) -
-            character->getLevel()) < 2) {
+        abs((long)state->currentMap.getHeight(attackLocation.getI(), attackLocation.getJ()) -
+            (long)character->getLevel()) < 2) {
       state->activeCharacter->performAttack(character);
     }
   }

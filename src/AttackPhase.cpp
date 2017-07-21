@@ -17,7 +17,7 @@ void AttackPhase::HandleMouseClick() {
       // later on, logic will need to be added for aoe, line of sight, etc.
       if (state->activeCharacter->getCurrentAttack()->checkRange(
               cI, cJ, character->getI(), character->getJ()) &&
-          abs(state->currentMap.getHeight(cI, cJ) - character->getLevel()) <
+          abs((long)state->currentMap.getHeight(cI, cJ) - (long)character->getLevel()) <
               2) {
         target = character;
         state->activeCharacter->performAttack(character);

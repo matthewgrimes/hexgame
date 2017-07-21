@@ -1,6 +1,6 @@
 #include "Cursor.h"
 #include "GLOBALS.h"
-#include <cmath>
+#include <math.h>
 Cursor::Cursor() {
   // ctor
   m_AnimTimer.Start();
